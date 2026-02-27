@@ -315,7 +315,7 @@ class Definitions {
     val cls = requiredClass("java.lang.Object")
     assert(!cls.isCompleted, "race for completing java.lang.Object")
     cls.info = ClassInfo(cls.owner.thisType, cls, List(AnyType, MatchableType), newScope)
-    cls.setFlag(NoInits | JavaDefined)
+    cls.setFlag(NoInits | JavaDefined | TransparentType)
 
     ensureConstructor(cls, cls.denot.asClass, EmptyScope)
     val companion = JavaLangPackageVal.info.decl(nme.Object).symbol.asTerm
@@ -2010,7 +2010,6 @@ class Definitions {
   @tu lazy val assumedTransparentNames: Map[Name, Set[Symbol]] =
     // we should do a more through sweep through it then.
     val strs = Map(
-      "Object" -> Set("java.lang"),
       "Comparable" -> Set("java.lang"),
       "Serializable" -> Set("java.io"),
     )
