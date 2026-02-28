@@ -200,7 +200,6 @@ case class TastyParser(
     defn.AnyClass,
     defn.MatchableClass,
     defn.ScalaPackage.typeMember("AnyKind"),
-    defn.AnyValClass,
     defn.NullClass,
     defn.NothingClass,
     defn.ScalaPackage.typeMember("Singleton"),
